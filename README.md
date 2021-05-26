@@ -53,7 +53,7 @@ Example of using an image in a Dockerfile:
 FROM ghcr.io/getimages/nginx:1.19.3-alpine
 ```
 
-## Does is helpful to you?
+## Was it helpful to you?
 
 * Star this repository
 * Be a member and share popular images
