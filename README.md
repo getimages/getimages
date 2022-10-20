@@ -1,59 +1,63 @@
 # GetImages
 
-A place for sharing Docker images to ditch the Docker Hub
+It's a registry for sharing Docker images to ditch the Docker Hub.
 
-## Why GetImages?
-
-We love GitHub! We like to use its docker image registry instead of the Docker Hub service. That's it!
-
-## Where is the shared images?
-
-All the shared Docker images are available here:
+## Images
 
 [https://github.com/orgs/getimages/packages](https://github.com/orgs/getimages/packages)
 
-## How to publish a new image?
-
-First, you need to be a member. To do so, create a new issue on this repository.
-
-Then tag your local image with the following command:
-```
-# Command:
-docker tag {LOCAL-IMAGE-ID} ghcr.io/getimages/{IMAGE-NAME}:{IMAGE-TAG}
-
-# Example:
-docker tag cc8775c0fe94 ghcr.io/getimages/nginx:1.19.3-alpine
-```
-
-In the end, push it to this registry with this command:
-```
-# Command:
-docker push ghcr.io/getimages/{IMAGE-NAME}:{IMAGE-TAG}
-
-# Example:
-docker push ghcr.io/getimages/nginx:1.19.3-alpine
-```
-
-## How to use the shared images?
+## Pulling Images
 
 Example of pulling an image:
-```
+
+```shell
 docker pull ghcr.io/getimages/nginx:1.19.3-alpine
 ```
 
 Example of using an image in a Docker-compose file:
-```
+
+```yaml
 services:
   mysql:
     image: ghcr.io/getimages/nginx:1.19.3-alpine
 ```
 
 Example of using an image in a Dockerfile:
-```
+
+```Dockerfile
 FROM ghcr.io/getimages/nginx:1.19.3-alpine
 ```
 
-## Was it helpful to you?
+## Pushing Images
 
+First, you need to be a member.
+To do so, create a new issue on this repository.
+I'll accept you as soon as possible.
+
+After being a member, follow these steps to push an image.
+
+```shell
+# Login docker (use your Github username and personal access token instead of password).
+docker login ghcr.io
+
+# Pull the official image from Docker Hub.
+docker pull nginx:1.23.0
+
+# See the image ID.
+docker images | grep nginx
+# nginx    1.23.0    55f4b40fe486    3 months ago    142MB
+
+# Tag the pulled image.
+# docker tag {LOCAL-IMAGE-ID} ghcr.io/getimages/{IMAGE-NAME}:{IMAGE-TAG}
+docker tag 55f4b40fe486 ghcr.io/getimages/nginx:1.23.0
+
+# Push the tagged image.
+# docker push ghcr.io/getimages/{IMAGE-NAME}:{IMAGE-TAG}
+docker push ghcr.io/getimages/nginx:1.23.0
+```
+
+## P.S.
+
+Was it helpful to you?
 * Star this repository
 * Be a member and share popular images
