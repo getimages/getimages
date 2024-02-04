@@ -43,15 +43,15 @@ docker login ghcr.io
 # Pull the official image from Docker Hub.
 docker pull nginx:1.23.0
 
-# See the image ID.
+# Find the image ID.
 docker images | grep nginx
 # nginx    1.23.0    55f4b40fe486    3 months ago    142MB
 
-# Tag the pulled image.
+# Tag the image to create a new one.
 # docker tag {LOCAL-IMAGE-ID} ghcr.io/getimages/{IMAGE-NAME}:{IMAGE-TAG}
 docker tag 55f4b40fe486 ghcr.io/getimages/nginx:1.23.0
 
-# Push the tagged image.
+# Push the new image.
 # docker push ghcr.io/getimages/{IMAGE-NAME}:{IMAGE-TAG}
 docker push ghcr.io/getimages/nginx:1.23.0
 ```
